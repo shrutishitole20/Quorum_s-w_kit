@@ -1,0 +1,36 @@
+import java.util.*;
+public  class Firstnonrepeating
+{
+  public static char firstnonrepeating(String s)
+  {
+    Map<Character,Integer> countMap = new LinkedHashMap<>();
+    
+    for(char c : s.toCharArray())
+    {
+        countMap.put(c, countMap.getOrDefault(c,0)+1);
+        
+    }
+    for(Map.Entry<Character,Integer> entry : countMap.entrySet())
+    {
+        if(entry.getValue() == 1)
+            return entry.getKey();
+    }
+    
+    return ' ';
+  }
+  public static void main(String args[])
+  {
+      String str = "aabcdef";
+      char result = firstnonrepeating(str);
+      if(result == ' ')
+          System.out.println("No non-repeating character found");
+      else  
+          System.out.println("first non-repeating character:" +result);
+  }
+}
+
+/*
+Output:
+
+first non-repeating character:b
+*/
