@@ -39,3 +39,13 @@ public class Queuewithstack
     }
   
 }
+
+/*
+
+Output:
+
+1
+2
+false
+
+*/
