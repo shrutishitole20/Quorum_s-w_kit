@@ -1,0 +1,41 @@
+import java.util.*;
+
+public class Queuewithstack
+{
+    Stack<Integer> in = new Stack<>(), out = new Stack<>();
+    
+    void add(int x)
+    {
+        in.push(x);
+    }
+    int remove()
+    {
+        shift();
+        return out.isEmpty()? -1 : out.pop();
+    }
+    int peek()
+    {
+        shift();
+        return out.isEmpty() ? -1 : out.peek();
+    }
+    boolean isEmpty()
+    {
+        return in.isEmpty() && out.isEmpty();
+    }
+    void shift()
+    {
+        if(out.isEmpty())
+          while(!in.isEmpty())
+            out.push(in.pop());
+    }
+    public static void main(String[] args)
+    {
+        Queuewithstack q = new Queuewithstack();
+        q.add(1);
+        q.add(2);
+        System.out.println(q.remove());
+        System.out.println(q.peek());
+        System.out.println(q.isEmpty());
+    }
+  
+}
