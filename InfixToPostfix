@@ -1,0 +1,56 @@
+import java.util.*;
+
+public class InfixToPostfix
+{
+    static int precedence(char op)
+    {
+        if(op == '+' || op == '-')return 1;
+        if(op == '*' || op == '/')return 2;
+        return 0;
+    }
+    static String convert(String infix)
+    {
+        StringBuilder postfix = new StringBuilder();
+        Stack<Character> s = new Stack<>();
+        
+        for(char ch : infix.toCharArray())
+        {
+            if(Character.isLetterOrDigit(ch))
+            {
+                postfix.append(ch);
+            }
+            else if (ch == '(')
+            {
+                s.push(ch);
+            }
+            else if (ch == ')')
+            {
+                while(!s.isEmpty() && s.peek() != '(')
+                  postfix.append(s.pop());
+                s.pop();
+            }
+            else
+            {
+                while(!s.isEmpty() && precedence(ch) <= precedence(s.peek()))
+                  postfix.append(s.pop());
+                s.push(ch);
+            }
+        }
+        while (! s.isEmpty())
+          postfix.append(s.pop());
+        return postfix.toString();
+    }
+    public static void main(String []args)
+    {
+        String infix = "a+b*(c-d)";
+        String postfix = convert(infix);
+        System.out.println("Postfix:" + postfix);
+        
+    }
+}
+/*
+
+Output:
+
+Postfix:abcd-*+
+*/
