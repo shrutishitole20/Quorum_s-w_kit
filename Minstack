@@ -1,0 +1,51 @@
+import java.util.*;
+
+class Minstack
+{
+    Stack<Integer> m = new Stack<>();
+    Stack<Integer> minStack = new Stack<>();
+    
+    void push(int x)
+    {
+        m.push(x);
+        if(minStack.isEmpty() || x <= minStack.peek())
+        {
+            minStack.push(x);
+        }
+        
+    }
+    void pop()
+    {
+        if(m.peek().equals(minStack.peek()))
+        {
+            minStack.pop();
+        }
+        m.pop();
+    }
+    int top()
+    {
+        return m.peek();
+    }
+    int getMin()
+    {
+      return m.peek();
+    }
+    public static void main(String[] args)
+    {
+        Minstack s = new Minstack();
+        s.push(3);
+        s.push(5);
+        s.push(2);
+        s.push(1);
+        System.out.println("Min:" + s.getMin());
+        s.pop();
+        System.out.println("Min:" + s.getMin());
+    }
+}
+
+/*
+Output:
+
+Min:1
+Min:2
+*/
