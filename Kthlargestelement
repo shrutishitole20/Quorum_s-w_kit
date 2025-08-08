@@ -1,0 +1,24 @@
+import java.util.Arrays;
+
+public class Kthlargestelement
+{
+    public static int findkthlargest(int[]nums, int k)
+    {
+        Arrays.sort(nums);
+        return nums[nums.length -k];
+        
+    }
+    public static void main(String[] args)
+    {
+        int[] arr = {3,2,1,5,6,4};
+        int k =2;
+        System.out.println(k + "th largest element:" + findkthlargest(arr,k));
+        
+    }
+}
+
+/*
+Output:
+
+2th largest element:5
+*/
