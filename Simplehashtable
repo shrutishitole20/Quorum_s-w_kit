@@ -1,0 +1,61 @@
+class Simplehashtable 
+{
+    static class Node 
+    {
+        String key;
+        int value;
+        Node next;
+        Node(String k, int v) 
+        { 
+            key = k; value = v; 
+          
+        }
+    }
+
+    Node[] table = new Node[5];
+
+    int hash(String key) 
+    {
+        return Math.abs(key.hashCode()) % table.length;
+    }
+
+    void put(String key, int value) 
+    {
+        int idx = hash(key);
+        for (Node n = table[idx]; n != null; n = n.next)
+            if (n.key.equals(key)) 
+            { n.value = value; return; 
+              
+            }
+        Node newNode = new Node(key, value);
+        newNode.next = table[idx];
+        table[idx] = newNode;
+    }
+
+    Integer get(String key) 
+    {
+        for (Node n = table[hash(key)]; n != null; n = n.next)
+            if (n.key.equals(key)) return n.value;
+        return null;
+    }
+
+    public static void main(String[] args) 
+    {
+        Simplehashtable ht = new Simplehashtable();
+        ht.put("apple", 10);
+        ht.put("banana", 20);
+        ht.put("banana", 25); // update value
+        System.out.println(ht.get("apple"));   // 10
+        System.out.println(ht.get("banana"));  // 25
+        System.out.println(ht.get("orange"));  // null
+    }
+}
+
+
+/*
+Output:
+
+10
+25
+null
+*/
