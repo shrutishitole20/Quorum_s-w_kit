@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int *a = malloc(5 * sizeof(int));   // garbage values
+    int *b = calloc(5, sizeof(int));    // all zeros
+
+    printf("malloc array: ");
+    for(int i=0; i<5; i++) 
+    printf("%d ", a[i]);
+    
+    printf("\ncalloc array: ");
+    for(int i=0; i<5; i++) 
+    printf("%d ", b[i]);
+
+    free(a);
+    free(b);
+    return 0;
+}
+/*
+Output:
+
+malloc array: 0 0 0 0 0 
+calloc array: 0 0 0 0 0
+*/
