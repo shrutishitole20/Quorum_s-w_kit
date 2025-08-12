@@ -1,0 +1,28 @@
+public class StringRotation
+{
+    public static boolean isrotation(String str1,String str2)
+    {
+        if(str1 == null || str2 == null)return false;
+        if(str1.length()!= str2.length())return false;
+        
+        String combined = str1 + str1;
+        
+        return combined.contains(str2);
+        
+    }
+    public static void main(String[] args)
+    {
+        String s1 ="ABCD";
+        String s2 ="CDAB";
+        
+        if(isrotation(s1,s2))
+        {
+            System.out.println(s2  +  "is rotation of"  +  s1);
+            
+        }
+        else{
+            System.out.println(s2  +  "is NOT a rotation of"  +  s1);
+            
+        }
+    }
+}
