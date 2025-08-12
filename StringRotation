@@ -26,3 +26,10 @@ public class StringRotation
         }
     }
 }
+
+/*
+
+Output:
+
+CDABis rotation ofABCD
+*/
