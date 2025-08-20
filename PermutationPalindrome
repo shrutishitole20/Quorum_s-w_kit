@@ -1,0 +1,50 @@
+/*
+1. Permutation Palindrome Check
+
+"How to tell if there is a permutation of a string that is a palindrome?"
+This means: Given a string, check if its characters can be rearranged to form a palindrome.
+Example: "carrace" → can be rearranged to "racecar".
+
+Solution approach:
+
+Count the frequency of each character.
+
+For even-length strings: all character counts must be even.
+
+For odd-length strings: at most one character can have an odd count.
+
+Use a frequency map and check odd counts — O(n) time complexity.
+
+*/
+
+
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class PermutationPalindrome {
+    public static boolean canFormPalindrome(String s) {
+        Map<Character, Integer> freq = new HashMap<>();
+        
+        // Count frequency of characters
+        for (char c : s.toCharArray()) {
+            freq.put(c, freq.getOrDefault(c, 0) + 1);
+        }
+
+        // Count odd frequencies
+        int oddCount = 0;
+        for (int count : freq.values()) {
+            if (count % 2 != 0) {
+                oddCount++;
+            }
+        }
+
+        return oddCount <= 1;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(canFormPalindrome("carrace")); // true
+        System.out.println(canFormPalindrome("hello"));   // false
+    }
+}
