@@ -1,0 +1,30 @@
+/*
+"I was given a basic palindrome question." This could be: Check if a string reads the same backwards. Simple approach: compare characters from both ends, O(n) time.
+*/
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        String str1 = "racecar";
+        String str2 = "hello";
+
+        System.out.println(str1 + " is palindrome? " + isPalindrome(str1));
+        System.out.println(str2 + " is palindrome? " + isPalindrome(str2));
+    }
+
+    // Method to check if a string is palindrome
+    public static boolean isPalindrome(String str) {
+        int left = 0;                  // Start pointer
+        int right = str.length() - 1;  // End pointer
+
+        // Compare characters from both ends
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false; // If mismatch found, not palindrome
+            }
+            left++;
+            right--;
+        }
+
+        return true; // If all characters match, it's a palindrome
+    }
+}
