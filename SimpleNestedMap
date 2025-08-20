@@ -1,0 +1,52 @@
+*/
+. Iterating Through Nested Maps
+
+"Iterating through a hashmap within a hashmap."
+Likely about processing nested Map<K, Map<L, V>>, such as:*/
+
+import java.util.*;
+
+public class SimpleNestedMap {
+    public static void main(String[] args) {
+        // Nested Map: City -> (Person -> Age)
+        Map<String, Map<String, Integer>> data = new HashMap<>();
+
+        // Inner map 1
+        Map<String, Integer> city1 = new HashMap<>();
+        city1.put("Amit", 25);
+        city1.put("Sneha", 22);
+
+        // Inner map 2
+        Map<String, Integer> city2 = new HashMap<>();
+        city2.put("Rohit", 30);
+        city2.put("Priya", 28);
+
+        // Add to outer map
+        data.put("Pune", city1);
+        data.put("Mumbai", city2);
+
+        // Iterating
+        for (String city : data.keySet()) {
+            Map<String, Integer> people = data.get(city);
+
+            for (String name : people.keySet()) {
+                int age = people.get(name);
+                System.out.println(city + " → " + name + " : " + age);
+            }
+        }
+    }
+}
+
+
+/*
+
+City: Pune, Name: Amit, Age: 25
+City: Pune, Name: Sneha, Age: 22
+City: Mumbai, Name: Rohit, Age: 30
+City: Mumbai, Name: Priya, Age: 28
+
+*/
+
+
+
+
